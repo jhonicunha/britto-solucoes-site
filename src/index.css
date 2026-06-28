@@ -1,0 +1,180 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 193 100% 8%; /* #002029 */
+    --foreground: 193 20% 96%;
+
+    --card: 193 100% 5%; /* #001319 */
+    --card-foreground: 193 20% 96%;
+
+    --popover: 193 100% 8%;
+    --popover-foreground: 193 20% 96%;
+
+    --primary: 178 97% 46%; /* #04E5DD */
+    --primary-foreground: 193 100% 8%;
+
+    --secondary: 196 100% 11%; /* #002D3A */
+    --secondary-foreground: 193 20% 96%;
+
+    --muted: 193 30% 15%;
+    --muted-foreground: 193 15% 65%;
+
+    --accent: 198 100% 42%; /* #0095D6 */
+    --accent-foreground: 193 100% 8%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 193 20% 96%;
+
+    --border: 196 100% 16%; /* #003d4f */
+    --input: 196 100% 16%;
+    --ring: 178 97% 46%;
+
+    --radius: 0.75rem;
+    
+    /* Social Media Colors */
+    --twitter: 203 89% 53%;
+    --facebook: 221 44% 41%;
+    --linkedin: 210 90% 40%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+  
+  /* Adding styles for blog content */
+  .prose h1, .prose h2, .prose h3, .prose h4 {
+    @apply text-white font-bold;
+  }
+  
+  .prose h1 {
+    @apply text-3xl md:text-4xl;
+  }
+  
+  .prose h2 {
+    @apply text-2xl md:text-3xl mt-8 mb-4;
+  }
+  
+  .prose h3 {
+    @apply text-xl md:text-2xl mt-6 mb-3;
+  }
+  
+  .prose p {
+    @apply text-gray-300 mb-4;
+  }
+  
+  .prose a {
+    @apply text-britto-cyan hover:text-cyan-400 transition-colors;
+  }
+  
+  .prose ul, .prose ol {
+    @apply text-gray-300 mb-4 pl-6;
+  }
+  
+  .prose ul {
+    @apply list-disc;
+  }
+  
+  .prose ol {
+    @apply list-decimal;
+  }
+  
+  .prose blockquote {
+    @apply border-l-4 border-britto-cyan pl-4 italic my-6 text-gray-300;
+  }
+  
+  .prose code {
+    @apply bg-britto-dark px-1 py-0.5 rounded text-gray-300;
+  }
+  
+  .prose pre {
+    @apply bg-britto-dark p-4 rounded-lg mb-6 overflow-x-auto;
+  }
+  
+  .prose img {
+    @apply rounded-lg my-6;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-britto-cyan hover:bg-opacity-90 text-britto-dark font-semibold py-3 px-6 rounded-lg transition-all duration-200 shadow-lg shadow-britto-cyan/20;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary hover:bg-britto-card text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 border border-britto-cyan/20;
+  }
+
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24;
+  }
+
+  .card-shadow {
+    @apply shadow-[0_8px_30px_rgb(0,0,0,0.3)];
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-britto-cyan to-britto-blue bg-clip-text text-transparent;
+  }
+  
+  /* Add animation utilities */
+  .animate-fade-in {
+    @apply opacity-0 translate-y-4 animate-[fadeIn_0.5s_ease-out_forwards];
+  }
+  
+  /* Adding line-clamp utilities */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  /* Add hover effects for cards */
+  .hover-zoom {
+    @apply transition-transform duration-300 hover:scale-105;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Add additional cyan glow animation */
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(4, 229, 221, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(4, 229, 221, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(4, 229, 221, 0);
+  }
+}
+
+.pulse-cyan {
+  animation: pulseGlow 2s infinite;
+}
